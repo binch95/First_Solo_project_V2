@@ -1,0 +1,37 @@
+server:
+ port: 8081
+spring:
+  mail:
+    host: smtp.gmail.com
+    port: 587
+    username: qlscm95@gmail.com
+    password: qjsn tvxf xflr xwor
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttls:
+            enable: true
+  servlet:
+     multipart:
+       max-file-size: 100MB
+       max-request-size: 100MB
+ 
+  mvc:
+   view:
+    prefix: /WEB-INF/jsp/
+    suffix: .jsp
+  datasource:
+  #driver-class-name: com.mysql.cj.jdbc.Driver
+   driver-class-name: net.sf.log4jdbc.sql.jdbcapi.DriverSpy
+   url: jdbc:log4jdbc:mysql://localhost:3306/Solo_Project
+   username: root
+   password: 
+mybatis:
+ type-aliases-package: com.example.project.vo
+custom:
+   siteName: projectA
+   siteMainUri: http://localhost:8081
+   emailFrom: no-reply@localhost
+   emailFromName: projectA
+   genFileDirPath: C:\work_jhb\sts-4.24.0.RELEASE-workspace\project\images

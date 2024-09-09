@@ -1,0 +1,148 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+
+
+<!DOCTYPE html>
+<html data-theme="light">
+<head>
+<meta charset="UTF-8">
+<title>${pageTitle }</title>
+
+<!-- 제이쿼리 -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+<!-- 폰트어썸 -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+<!-- 폰트어썸 FREE 아이콘 리스트 : https://fontawesome.com/v5.15/icons?d=gallery&p=2&m=free -->
+
+<!-- 테일윈드 -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.1.4/tailwind.min.css">
+<!-- 테일윈드 치트시트 : https://nerdcave.com/tailwind-cheat-sheet -->
+<!-- <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2/dist/tailwind.min.css" rel="stylesheet" type="text/css" /> -->
+
+<!-- daisyUI -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/daisyui/4.12.10/full.css" />
+
+<style>
+
+
+
+.head-menubar div>ul li {
+	margin: 5px;
+	display: inline-block;
+}
+
+.search {
+	display: inline-block;
+	padding: 0 16px 0 12px;
+	line-height: 30px;
+	height: 32px;
+	border: 1px solid #dddbda;
+	border-radius: 15px;
+	background-color: #fff;
+	color: rgb(8, 7, 7);
+	width: 400px;
+
+}
+.search-btn {
+	position:absolute;
+	    top: 5px;
+    bottom: 5px;
+    right: 5px;
+    
+    width: 30px;
+    margin-right: 15px;
+}
+
+.logo-btn:before, 
+.logo-btn:after {
+  content: "";
+  transition: 0.5s all ease;
+  backface-visibility: hidden;
+  position: absolute;
+  width: 0;
+  height: 2px;
+  background: rgba(0, 0, 0, 0.5);
+}
+
+.logo-btn:before {
+  right: 0;
+  top: 0;
+}
+
+.logo-btn:after {
+  left: 0;
+  bottom: 0;
+}
+
+.logo-btn:hover:before, .logo-btn:hover:after {
+  width: 100%;
+}
+
+.logo-btn>a{
+font-size: 2rem;
+}
+.mainMenuBar> ul li{
+cursor: pointer;
+}
+
+</style>
+
+
+
+</head>
+
+<body>
+	<header id="mainHeader" class="head-menubar">
+
+		<div class="h-10 mx-auto text-1xl text-right">
+
+			<ul class="m-3">
+				<li><a class="hover:underline" href="/">HOME</a></li>
+				<li><a class="hover:underline" href="../article/list?boardId=1&page=1">고객센터</a></li>
+				<c:if test="${!rq.isLogined() }">
+					<li><a class="hover:underline" href="../member/loginOrsign">LOGIN</a></li>
+					<li><a class="hover:underline" href="../member/loginOrsign">SIGN</a></li>
+				</c:if>
+				<c:if test="${rq.isLogined() }">
+					<li><a class="hover:underline" href="../article/write">주문내역</a></li>
+					<li><a class="hover:underline" href="../member/myPage">정보수정</a></li>
+					<li><a onclick="if(confirm('로그아웃 하시겠습니까?') == false) return false;" class="hover:underline"
+						href="../member/doLogout">LOGOUT</a></li>
+				</c:if>
+			</ul>
+		</div>
+
+		<div class="flex justify-center">
+			<ul class="m-3">
+				<li class="logo-btn relative"><a href="/">YOUR OCTION</a></li>
+				
+				<li><form class="inline-block relative" action="/usr/article/list">
+					<input class="search" type="text" name="searchKeyword"/>
+					
+						  <button class="search-btn"><i class="fas fa-search"></i></button>
+				</form></li>
+        			<li><a class="sell-btn" href="" >내 상품 팔기</a></li>       
+				</ul>
+				
+		</div>
+		
+		
+		<div class="mainMenuBar flex justify-center mt-16">
+		<ul>
+			<li><a href="../article/list?boardId=1&page=1">전자제품</a></li>
+			<li><a href="../article/list?boardId=2&page=1">가구 및 인테리어</a></li>
+			<li><a href="../article/list?boardId=3&page=1">패션 및 악세서리</a></li>
+			<li><a href="../article/list?boardId=4&page=1">스포츠 및 레저</a></li>
+			<li><a href="../article/list?boardId=5&page=1">도서 및 문구</a></li>
+			<li><a href="../article/list?boardId=6&page=1">자동차 및 오토바이</a></li>
+			<li><a href="../article/list?boardId=7&page=1">홈 및 주방용품</a></li>
+			<li><a href="../article/list?boardId=9&page=1">공구 및 원예</a></li>
+			<li><a href="../article/list?boardId=8&page=1">수집품 및 엔티크</a></li>
+			<li><a href="../article/list?boardId=10&page=1">기타</a></li>
+		</ul>
+		</div>
+		
+
+	</header>
+</body>
+
