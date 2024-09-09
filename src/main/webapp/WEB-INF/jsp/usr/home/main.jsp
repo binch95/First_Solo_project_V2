@@ -132,7 +132,8 @@
 						<div class="product-item">
 							<img src="/common/genFile/file/article/1526/extra/Img/1" alt="" class="product-img">
 						</div>
-
+ 
+ 
 						<div class="product-info">
 							<h3 class="product-title">${article.title}</h3>
 							<p class="product-bid">입찰가: ${article.bid}원</p>
