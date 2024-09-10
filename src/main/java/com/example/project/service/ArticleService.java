@@ -78,5 +78,50 @@ public class ArticleService {
 		return ResultData.from("S-1", Ut.f("%d번 게시글을 수정했습니다", article.getId()), "수정된 게시글", article);
 	}
 
+	public Article getForPrintArticle(int loginedMemberId, int id) {
+		Article article = articleRepository.getForPrintArticle(id);
+
+		controlForPrintData(loginedMemberId, article);
+
+		return article;
+	}
+
+
+	public ResultData increaseHitCount(int id) {
+		int affectedRow = articleRepository.increaseHitCount(id);
+
+		if (affectedRow == 0) {
+			return ResultData.from("F-1", "해당 게시글 없음", "id", id);
+		}
+
+		return ResultData.from("S-1", "해당 게시글 조회수 증가", "id", id);
+
+	}
+	
+	public Object getArticleHitCount(int id) {
+		return articleRepository.getArticleHitCount(id);
+	}
+
+	public void deleteArticle(int id) {
+		articleRepository.deleteArticle(id);
+	}
+
+	public int getCurrentArticleId() {
+		return articleRepository.getCurrentArticleId();
+
+	}
+
+	public ResultData writeArticle(int memberId, String title, String body, String boardId) {
+		articleRepository.writeArticle(memberId, title, body, boardId);
+
+		int id = articleRepository.getLastInsertId();
+
+		return ResultData.from("S-1", Ut.f("%d번 글이 등록되었습니다", id), "등록 된 게시글의 id", id);
+	}
+
+	public void modifyArticle(int id, String title, String body) {
+		articleRepository.modifyArticle(id, title, body);
+	}
+
 
 }

@@ -74,29 +74,27 @@
 }
 
 .abtn {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    background-color: rgba(0, 0, 0, 0.5);
-    color: white;
-    border: none;
-    padding: 10px;
-    cursor: pointer;
-    border-radius: 50%;
-    z-index: 10;
+	position: absolute;
+	top: 50%;
+	transform: translateY(-50%);
+	color: darkgray;
+	border: none;
+	padding: 10px;
+	cursor: pointer;
+	border-radius: 50%;
+	font-size: 30px;
+	z-index: 100;
 }
 
 .prev {
-	left: 10px; /* 버튼을 슬라이더 바깥에 위치 */
+	left: -40px; /* 버튼을 슬라이더 바깥에 위치 */
 }
 
 .next {
-	right: 10px; /* 버튼을 슬라이더 바깥에 위치 */
+	right: -40px; /* 버튼을 슬라이더 바깥에 위치 */
 }
 
-.abtn:hover {
-	background-color: rgba(0, 0, 0, 0.8);
-}
+
 
 .mainImg>img {
 	width: 50%;
@@ -119,53 +117,60 @@
 	<script src="/resource/mainSlideBtn.js"></script>
 
 	<div class="main-list-container">
+		<div class="relative">
+			<h2 class="text-left font-bold text-2xl mt-7 mb-2">실시간 게시물</h2>
 
-		<div class="slider-container" id="slider1-container">
 			<button class="prev abtn" onclick="prevSlide(1)">&#10094;</button>
-			<!-- 버튼이 슬라이더 바깥에 위치 -->
 			<button class="next abtn" onclick="nextSlide(1)">&#10095;</button>
+			<div class="slider-container" id="slider1-container">
 
-			<div class="slider" id="slider1">
-				<c:forEach var="article" items="${articles}">
-					<div class="slide">
-						<!-- 상품 이미지 -->
-						<div class="product-item">
-							<img src="/common/genFile/file/article/1526/extra/Img/1" alt="" class="product-img">
+				<div class="slider" id="slider1">
+					<c:forEach var="article" items="${articles}">
+						<div class="slide">
+							<!-- 상품 이미지 -->
+							<div class="product-item">
+								<img src="/common/genFile/file/article/1526/extra/Img/1" alt="" class="product-img">
+							</div>
+
+
+							<div class="product-info">
+								<h3 class="product-title">${article.title}</h3>
+								<p class="product-bid">입찰가: ${article.bid}원</p>
+								<p class="product-price">즉시구매가: ${article.price}원</p>
+								<p class="product-bidders">입찰수: ${article.bidder_count}명</p>
+							</div>
 						</div>
- 
- 
-						<div class="product-info">
-							<h3 class="product-title">${article.title}</h3>
-							<p class="product-bid">입찰가: ${article.bid}원</p>
-							<p class="product-price">즉시구매가: ${article.price}원</p>
-							<p class="product-bidders">입찰수: ${article.bidder_count}명</p>
-						</div>
-					</div>
-				</c:forEach>
+					</c:forEach>
+				</div>
 			</div>
 		</div>
 
-		<div class="slider-container" id="slider1-container">
+
+		<div class="relative">
+			<h2 class="text-left font-bold text-2xl mt-7 mb-2">인기 게시물</h2>
 			<button class="prev abtn" onclick="prevSlide(2)">&#10094;</button>
-			<!-- 버튼이 슬라이더 바깥에 위치 -->
 			<button class="next abtn" onclick="nextSlide(2)">&#10095;</button>
+			<div class="slider-container" id="slider2-container">
+				<!-- 버튼이 슬라이더 바깥에 위치 -->
 
-			<div class="slider" id="slider2">
-				<c:forEach var="article" items="${articles}">
-					<div class="slide">
-						<!-- 상품 이미지 -->
-						<div class="product-item">
-							<img src="/common/genFile/file/article/1526/extra/Img/1" alt="" class="product-img">
-						</div>
 
-						<div class="product-info">
-							<h3 class="product-title">${article.title}</h3>
-							<p class="product-bid">입찰가: ${article.bid}원</p>
-							<p class="product-price">즉시구매가: ${article.price}원</p>
-							<p class="product-bidders">입찰수: ${article.bidder_count}명</p>
+				<div class="slider" id="slider2">
+					<c:forEach var="article" items="${articles}">
+						<div class="slide">
+							<!-- 상품 이미지 -->
+							<div class="product-item">
+								<img src="/common/genFile/file/article/1526/extra/Img/1" alt="" class="product-img">
+							</div>
+
+							<div class="product-info">
+								<h3 class="product-title">${article.title}</h3>
+								<p class="product-bid">입찰가: ${article.bid}원</p>
+								<p class="product-price">즉시구매가: ${article.price}원</p>
+								<p class="product-bidders">입찰수: ${article.bidder_count}명</p>
+							</div>
 						</div>
-					</div>
-				</c:forEach>
+					</c:forEach>
+				</div>
 			</div>
 		</div>
 	</div>

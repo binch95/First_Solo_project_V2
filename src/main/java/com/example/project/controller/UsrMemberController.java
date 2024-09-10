@@ -79,10 +79,10 @@ public class UsrMemberController {
 			return Ut.jsHistoryBack("F-3", Ut.f("%s는(은) 존재 x", loginId));
 		}
 
-		if (member.getLoginPw().equals(loginPw) == false) {
-			return Ut.jsHistoryBack("F-4", Ut.f("비밀번호 틀림"));
+		if (member.getLoginPw().equals(Ut.sha256(loginPw)) == false) {
+			return Ut.jsHistoryBack("F-4", Ut.f("비밀번호가 일치하지 않습니다!!!!!"));
 		}
-		System.out.println("member123 : " + member);
+		
 		rq.login(member);
 		
 		if (afterLoginUri.length() > 0) {

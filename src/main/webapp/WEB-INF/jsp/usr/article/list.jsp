@@ -4,62 +4,63 @@
 <%@ include file="../common/head.jspf"%>
 <hr />
 
-<<style>
+<
+<style>
 .product-list-container {
-    width: 65%;
-    margin: 0 auto;
-    text-align: center;
+	width: 65%;
+	margin: 0 auto;
+	text-align: center;
 }
 
 .product-list {
-    display: grid;
-    grid-template-columns: repeat(5, 1fr); /* 한 줄에 5개씩 */
-    gap: 20px;
-    margin-bottom: 20px;
+	display: grid;
+	grid-template-columns: repeat(5, 1fr); /* 한 줄에 5개씩 */
+	gap: 20px;
+	margin-bottom: 20px;
 }
 
 .product-item {
-    border: 1px solid #ddd;
-    border-radius: 5px;
-    padding: 15px;
-    text-align: left;
+	border: 1px solid #ddd;
+	border-radius: 5px;
+	padding: 15px;
+	text-align: left;
 }
 
 .product-img {
-    width: 100%;
-    height: 150px;
-    object-fit: cover;
-    border-radius: 5px;
+	width: 100%;
+	height: 150px;
+	object-fit: cover;
+	border-radius: 5px;
 }
 
 .product-info {
-    margin-top: 10px;
+	margin-top: 10px;
 }
 
 .product-title {
-    font-size: 16px;
-    font-weight: bold;
+	font-size: 16px;
+	font-weight: bold;
 }
 
 .product-bid, .product-price, .product-bidders {
-    font-size: 14px;
-    margin: 5px 0;
+	font-size: 14px;
+	margin: 5px 0;
 }
 
 .product-stats {
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: 20px;
-    padding: 10px;
-    background-color: #f8f8f8;
-    border-radius: 5px;
-    border: 1px solid #ddd;
+	display: flex;
+	justify-content: space-between;
+	margin-bottom: 20px;
+	padding: 10px;
+	background-color: #f8f8f8;
+	border-radius: 5px;
+	border: 1px solid #ddd;
 }
 
 .product-stats p {
-    margin: 0;
-    font-size: 16px;
-    font-weight: bold;
+	margin: 0;
+	font-size: 16px;
+	font-weight: bold;
 }
 </style>
 <script>
@@ -95,32 +96,42 @@ window.onload = function() {
 
 
 		<div class="product-list-container">
-				<div class="mb-4 flex">
-			<div><c:choose><c:when test="${board.name != null}"> ${board.name}</c:when><c:otherwise> 검색어 ${searchKeyword }이 포함된 </c:otherwise> </c:choose>실시간상품 ${articlesCount }개 중 20개상품</div>
-			<div class="flex-grow"></div>
-			<!-- 			<form action="../article/list"> -->
+			<div class="mb-4 flex">
+				<div>
+					<c:choose>
+						<c:when test="${board.name != null}"> ${board.name}</c:when>
+						<c:otherwise> 검색어 ${searchKeyword }이 포함된 </c:otherwise>
+					</c:choose>
+					실시간상품 ${articlesCount }개 중 20개상품
+				</div>
+				<div class="flex-grow"></div>
+				<!-- 			<form action="../article/list"> -->
+			</div>
+			<div class="product-stats">
+				<p>
+					평균 가격: <span id="avgPrice"></span>원
+				</p>
+				<p>
+					가장 높은 가격: <span id="maxPrice"></span>원
+				</p>
+				<p>
+					가장 낮은 가격: <span id="minPrice"></span>원
+				</p>
+			</div>
+			<div class="product-list" id="productList">
+				<c:forEach var="article" items="${articles}">
+					<div class="product-item">
+						<a href="detail?id=${article.id}"> <!-- 상품 이미지 --> <img src="${rq.getImgUri(article.id)}" alt=""
+							class="product-img"> <!-- 상품 정보 -->
+							<div class="product-info">
+								<h3 class="product-title">${article.title}</h3></a>
+						<p class="product-bid">입찰가: ${article.bid}원</p>
+						<p class="product-price">즉시구매가: ${article.price}원</p>
+						<p class="product-bidders">입찰자: ${article.bidder_count}</p>
+					</div>
+			</div>
+			</c:forEach>
 		</div>
-<div class="product-stats">
-    <p>평균 가격: <span id="avgPrice"></span>원</p>
-    <p>가장 높은 가격: <span id="maxPrice"></span>원</p>
-    <p>가장 낮은 가격: <span id="minPrice"></span>원</p>
-</div>
-    <div class="product-list" id="productList">
-        <c:forEach var="article" items="${articles}">
-            <div class="product-item">
-                <!-- 상품 이미지 -->
-                <img src="${rq.getImgUri(article.id)}" alt="" class="product-img">
-
-                <!-- 상품 정보 -->
-                <div class="product-info">
-                    <h3 class="product-title">${article.title}</h3>
-                    <p class="product-bid">입찰가: ${article.bid}원</p>
-                    <p class="product-price">즉시구매가: ${article.price}원</p>
-                    <p class="product-bidders">입찰자: ${article.bidder_count}</p>
-                </div>
-            </div>
-        </c:forEach>
-    </div>
 	</div>
 
 

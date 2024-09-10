@@ -94,19 +94,19 @@ cursor: pointer;
 <body>
 	<header id="mainHeader" class="head-menubar">
 
-		<div class="h-10 mx-auto text-1xl text-right">
+		<div class="h-10 mx-auto text-1xl text-right topmenu">
 
 			<ul class="m-3">
 				<li><a class="hover:underline" href="/">HOME</a></li>
 				<li><a class="hover:underline" href="../article/list?boardId=1&page=1">고객센터</a></li>
 				<c:if test="${!rq.isLogined() }">
-					<li><a class="hover:underline" href="../member/loginOrsign">LOGIN</a></li>
-					<li><a class="hover:underline" href="../member/loginOrsign">SIGN</a></li>
+					<li><a class="hover:underline loginnone" href="../member/loginOrsign">LOGIN</a></li>
+					<li><a class="hover:underline loginnone" href="../member/loginOrsign">SIGN</a></li>
 				</c:if>
 				<c:if test="${rq.isLogined() }">
-					<li><a class="hover:underline" href="../article/write">주문내역</a></li>
-					<li><a class="hover:underline" href="../member/myPage">정보수정</a></li>
-					<li><a onclick="if(confirm('로그아웃 하시겠습니까?') == false) return false;" class="hover:underline"
+					<li><a class="hover:underline loginnone" href="../article/write">주문내역</a></li>
+					<li><a class="hover:underline loginnone" href="../member/myPage">정보수정</a></li>
+					<li><a onclick="if(confirm('로그아웃 하시겠습니까?') == false) return false;" class="hover:underline loginnone"
 						href="../member/doLogout">LOGOUT</a></li>
 				</c:if>
 			</ul>

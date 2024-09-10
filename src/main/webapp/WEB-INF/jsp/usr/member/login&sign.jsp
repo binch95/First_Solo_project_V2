@@ -424,6 +424,15 @@ to {
 	margin: 10px;
 	margin-left: 30px;
 }
+
+.topmenu{
+display: flex;
+justify-content: flex-end;
+}
+
+.loginnone{
+display: none;
+}
 </style>
 <script>
 $(document).ready(function() {
