@@ -78,6 +78,9 @@
 	content: "닫기";
 }
 
+
+
+
 .cotn_principal {
 	position: absolute;
 	width: 100%;
@@ -85,8 +88,8 @@
 	height: 100%;
 	/* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#cfd8dc+0,607d8b+100,b0bec5+100 */
 	background-image:
-		url("https://cdn.pixabay.com/photo/2015/01/25/18/05/hammer-611582_1280.jpg");
-	background-size: 100% 100%;
+		url(" https://images.unsplash.com/photo-1657216328529-3852a5f372cb?q=80&w=2030&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D");
+	background-size: 200% 200%;
 }
 
 .cont_centrar {
@@ -358,7 +361,6 @@ to {
 }
 .cont_form_login {
 	position: absolute;
-	opacity: 0;
 	display: none;
 	width: 320px;
 	-webkit-transition: all 0.5s;
@@ -463,7 +465,7 @@ $(document).ready(function() {
 
 
 <body>
-	<div class="navBtn flex justify-center">
+	<div class="navBtn flex justify-center ">
 		<button id="navToggleBtn" class="nav-toggle-btn" onclick="toggleMenu()">&#9776; 메뉴</button>
 	</div>
 	<div class="cotn_principal">
@@ -516,6 +518,11 @@ $(document).ready(function() {
 								autocomplete="off" placeholder="LoginId" /> <input type="password" name="loginPw" autocomplete="off"
 								placeholder="Password" />
 							<button class="btn_login">LOGIN</button>
+							<a href="/oauth2/authorization/google" style="text-decoration: none;">
+    <div style="display: inline-block; background-color: #4285F4; color: white; padding: 10px 20px; border-radius: 5px; font-family: Arial, sans-serif; font-size: 14px; cursor: pointer;">
+        Sign in with Google <img src="https://developers.google.com/identity/images/g-logo.png" alt="Google Logo" style="vertical-align: middle; width: 20px; margin-right: 10px; display: inline-block;">
+    </div>
+</a>
 						</div>
 					</form>
 
